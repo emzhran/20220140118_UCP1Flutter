@@ -33,6 +33,8 @@ class _LoginPageState extends State<LoginPage> {
               key: _formKey,
               child: Column(
                 children: [
+                  Image(image: AssetImage('./assets/image/AreiLogo.png'),),
+                  SizedBox(height: 20),
                   Text(
                     'SELAMAT DATANG',
                     style: TextStyle(
