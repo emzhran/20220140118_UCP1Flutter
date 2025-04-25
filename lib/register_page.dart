@@ -39,20 +39,55 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Form(
               key: _formKey,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image(
-                    image: AssetImage('./assets/image/AreiLogo.png'),
-                    width: 230,
-                    height: 100,
+                  Center(
+                    child: Image(
+                      image: AssetImage('./assets/image/AreiLogo.png'),
+                      width: 230,
+                      height: 100,
+                      ), 
                   ),
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  Center(
+                    child:  Text(
                     'DAFTAR AKUN BARU',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
                     ),
+                  ),
+                  ),
+                  const SizedBox(height: 40),
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      'Nama Lengkap',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  TextFormField(
+                    controller: namaLengkapController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(color: Colors.black, width: 2.0),
+                      ),
+                      prefixIcon: Icon(Icons.person, color: Colors.black),
+                      hintText: 'Nama Lengkap',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Nama Lengkap tidak boleh kosong';
+                      }
+                      return null;
+                    },
                   ),
                 ],
               ),
