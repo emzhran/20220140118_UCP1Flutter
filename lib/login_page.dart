@@ -27,11 +27,12 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         child: Center(
-          child: SingleChildScrollView(
+          child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
               key: _formKey,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image(image: AssetImage('./assets/image/AreiLogo.png'),),
                   SizedBox(height: 20),
@@ -43,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontSize: 25,
                     ),
                   ),
-                  const SizedBox(height: 80),
+                  const SizedBox(height: 50),
                   TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
@@ -52,29 +53,32 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       prefixIcon: Icon(Icons.email, color: Colors.white,),
                       hintText: 'Email',
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email boleh kosong';
+                        return 'Email tidak boleh kosong';
                       }
-                      return 'null';
+                      return null;
                     },
                   ),
                   const SizedBox(height: 50),
                   TextFormField(
                     controller: passwordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      prefixIcon: Icon(Icons.password, color: Colors.white,),
+                      prefixIcon: Icon(Icons.lock, color: Colors.white,),
                       hintText: 'Password',
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Password tidak boleh kosong';
                       }
-                      return 'null';
+                      return null;
                     },
                   ),
                   const SizedBox(height: 80),
