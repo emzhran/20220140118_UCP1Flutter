@@ -46,18 +46,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       image: AssetImage('./assets/image/AreiLogo.png'),
                       width: 230,
                       height: 100,
-                      ), 
+                    ),
                   ),
                   const SizedBox(height: 20),
                   Center(
-                    child:  Text(
-                    'DAFTAR AKUN BARU',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                    child: Text(
+                      'DAFTAR AKUN BARU',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
                     ),
-                  ),
                   ),
                   const SizedBox(height: 40),
                   Padding(
@@ -75,6 +75,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   TextFormField(
                     controller: namaLengkapController,
                     decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide(color: Colors.black, width: 2.0),
@@ -88,6 +91,48 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                       return null;
                     },
+                  ),
+                  const SizedBox(height: 40),
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      'Email',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: emailController,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.black,
+                                width: 2.0,
+                              ),
+                            ),
+                            prefixIcon: Icon(Icons.email, color: Colors.black),
+                            hintText: 'Email',
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Email tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
