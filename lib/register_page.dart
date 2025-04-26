@@ -20,7 +20,8 @@ class _RegisterPageState extends State<RegisterPage> {
     super.initState();
   }
 
-      bool _isObscure = true;
+  bool _isObscure = true;
+  bool _isObscureConfirm = true;
 
   @override
   Widget build(BuildContext context) {
@@ -234,6 +235,65 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ),
                                 ),
                                 hintStyle: TextStyle(color: Colors.black)
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Password tidak boleh kosong';
+                                }
+                                return null;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 8.0),
+                              child: Text(
+                                'Konfirmasi Password',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            TextFormField(
+                              controller: konfirmPasswordController,
+                              obscureText: _isObscureConfirm,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.black,
+                                    width: 2.0,
+                                  ),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: Colors.black,
+                                ),
+                                hintText: 'Konfirmasi Password',
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                    _isObscureConfirm = !_isObscureConfirm;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    _isObscureConfirm ? Icons.visibility : Icons.visibility_off,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                hintStyle: TextStyle(color: Colors.black),
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
