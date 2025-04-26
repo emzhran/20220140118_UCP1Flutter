@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_118/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -26,13 +27,13 @@ class _LoginPageState extends State<LoginPage> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 82, 45, 94),
-              Color.fromARGB(255, 111, 20, 72),
+              Color.fromARGB(184, 171, 165, 211),
+              Color.fromARGB(158, 204, 196, 234),
             ],
           ),
         ),
         child: Center(
-          child: Padding(
+          child: SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
             child: Form(
               key: _formKey,
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       'SELAMAT DATANG KEMBALI',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 23,
                       ),
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       "Email",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
@@ -76,15 +77,14 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(color: Colors.white),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(color: Colors.white, width: 2.0),
+                        borderSide: BorderSide(color: Colors.black, width: 2.0),
                       ),
-                      prefixIcon: Icon(Icons.email, color: Colors.white),
+                      prefixIcon: Icon(Icons.email, color: Colors.black),
                       hintText: 'Email',
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.black),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -93,13 +93,13 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 30),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
                     child: Text(
                       "Password",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
@@ -112,13 +112,12 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(color: Colors.white, width: 4.0),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(color: Colors.white, width: 2.0),
+                        borderSide: BorderSide(color: Colors.black, width: 2.0),
                       ),
-                      prefixIcon: Icon(Icons.lock, color: Colors.white),
+                      prefixIcon: Icon(Icons.lock, color: Colors.black),
                       hintText: 'Password',
                       suffixIcon: IconButton(
                         onPressed: () {
@@ -128,10 +127,10 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         icon: Icon(
                           _isObscure ? Icons.visibility : Icons.visibility_off,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                       ),
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.black),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -140,7 +139,30 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 80),
+                  const SizedBox(height: 50),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if(_formKey.currentState!.validate()){
+                          Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage(email: emailController.text,)),
+                        );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(184, 39, 29, 109),
+                        fixedSize: const Size(400, 60),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      child: Text(
+                        'MASUK',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
