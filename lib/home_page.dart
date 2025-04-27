@@ -142,6 +142,34 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
                 ),
+                const SizedBox(height: 15),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: (){},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(184, 39, 29, 109),
+                      padding: const EdgeInsets.all(40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ), 
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.inventory, color: Colors.white, size: 50),
+                        const SizedBox(height: 15),
+                        const Text('Barang Masuk/Keluar',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               ],
             ),
           ),
