@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ucp1_118/home_page.dart';
+import 'package:ucp1_118/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -367,6 +369,37 @@ class _RegisterPageState extends State<RegisterPage> {
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                     Center(
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Sudah memili akun? Silahkan ',
+                        style: TextStyle(
+                          color: Colors.black, 
+                          fontSize: 14,
+                          ),
+                        children: [
+                          TextSpan(
+                            text: 'Login disini!',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            recognizer:
+                                TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => LoginPage(),
+                                      ),
+                                    );
+                                  },
+                          ),
+                        ],
                       ),
                     ),
                   ),
