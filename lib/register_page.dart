@@ -25,7 +25,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool _isObscure = true;
   bool _isObscureConfirm = true;
-  String? _errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -320,12 +319,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 30),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        _errorMessage = null;
-                      });
                       if (_formKey.currentState!.validate()) {
                         if (passwordController.text !=
                             konfirmPasswordController.text) {
