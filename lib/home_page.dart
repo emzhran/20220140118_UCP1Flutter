@@ -114,8 +114,34 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: (){},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(184, 39, 29, 109),
+                        padding: const EdgeInsets.all(30),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)
+                        )
+                      ), 
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.people, color: Colors.white, size: 40),
+                          const SizedBox(height: 10),
+                          const Text('Data Pelanggan',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold
+                          ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
-                )
+                ),
               ],
             ),
           ),
