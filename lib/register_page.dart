@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_118/home_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -12,8 +13,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nomorHpController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController konfirmPasswordController =
-      TextEditingController();
+  final TextEditingController konfirmPasswordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -22,10 +23,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool _isObscure = true;
   bool _isObscureConfirm = true;
+  String? _errorMessage;
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -62,7 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 29),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
                     child: Text(
@@ -127,7 +128,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                     width: 2.0,
                                   ),
                                 ),
-                                prefixIcon: Icon(Icons.email, color: Colors.black),
+                                prefixIcon: Icon(
+                                  Icons.email,
+                                  color: Colors.black,
+                                ),
                                 hintText: 'Email',
                               ),
                               validator: (value) {
@@ -170,7 +174,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                     width: 2.0,
                                   ),
                                 ),
-                                prefixIcon: Icon(Icons.phone,color: Colors.black),
+                                prefixIcon: Icon(
+                                  Icons.phone,
+                                  color: Colors.black,
+                                ),
                                 hintText: 'No HP',
                               ),
                               validator: (value) {
@@ -230,11 +237,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                     });
                                   },
                                   icon: Icon(
-                                    _isObscure ? Icons.visibility : Icons.visibility_off,
+                                    _isObscure
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintStyle: TextStyle(color: Colors.black)
+                                hintStyle: TextStyle(color: Colors.black),
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -285,11 +294,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                 suffixIcon: IconButton(
                                   onPressed: () {
                                     setState(() {
-                                    _isObscureConfirm = !_isObscureConfirm;
+                                      _isObscureConfirm = !_isObscureConfirm;
                                     });
                                   },
                                   icon: Icon(
-                                    _isObscureConfirm ? Icons.visibility : Icons.visibility_off,
+                                    _isObscureConfirm
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
                                     color: Colors.black,
                                   ),
                                 ),
@@ -297,7 +308,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'Password tidak boleh kosong';
+                                  return 'Konfirmasi Password tidak boleh kosong';
                                 }
                                 return null;
                               },
@@ -306,6 +317,58 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ],
+                  ),
+                  const SizedBox(height: 28),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _errorMessage = null;
+                      });
+                      if (_formKey.currentState!.validate()) {
+                        if (passwordController.text !=
+                            konfirmPasswordController.text) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Password tidak sama'),
+                              backgroundColor: Colors.red,
+                              duration: Duration(seconds: 2),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  topRight: Radius.circular(16),
+                                )
+                              ),
+                            ),
+                          );
+                        } else {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) =>
+                                      HomePage(email: emailController.text),
+                            ),
+                          );
+                        }
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(184, 39, 29, 109),
+                      fixedSize: const Size(400, 60),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Daftar',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
