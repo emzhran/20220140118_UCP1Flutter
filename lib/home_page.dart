@@ -83,6 +83,42 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: (){},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(184, 39, 29, 109),
+                          padding: const EdgeInsets.all(30),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)
+                          )
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.work_history, color: Colors.white, size: 40),
+                            const SizedBox(height: 10),
+                            const Text('Data Piket',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
