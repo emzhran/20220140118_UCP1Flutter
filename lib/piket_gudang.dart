@@ -116,6 +116,41 @@ class _PiketGudangState extends State<PiketGudang> {
                   )
                 ),
               ),
+              const SizedBox(height: 16),
+              const Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text('Pilih Tanggal',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                )),
+              ),
+              const SizedBox(height: 10),
+              GestureDetector(
+                onTap: () => _selectedDate(context),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.calendar_month, color: Colors.black),
+                      SizedBox(width: 10),
+                      Text(
+                        selectedDate != null
+                        ? _formatTanggal(selectedDate)
+                        : 'Pilih Tanggal',
+                        style: TextStyle(
+                          color: Colors.black
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           )),
       ),
