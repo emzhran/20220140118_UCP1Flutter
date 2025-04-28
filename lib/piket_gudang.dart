@@ -188,7 +188,10 @@ class _PiketGudangState extends State<PiketGudang> {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
-                          borderSide: BorderSide(color: Colors.black, width: 1.5),
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                            width: 1.5,
+                          ),
                         ),
                         hintText: 'Tugas Piket',
                         hintStyle: TextStyle(color: Colors.black),
@@ -205,7 +208,7 @@ class _PiketGudangState extends State<PiketGudang> {
                   ElevatedButton(
                     onPressed: _tambahDataPiket,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:  Color.fromARGB(184, 39, 29, 109),
+                      backgroundColor: Color.fromARGB(184, 39, 29, 109),
                       fixedSize: const Size(180, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -213,13 +216,70 @@ class _PiketGudangState extends State<PiketGudang> {
                     ),
                     child: const Text(
                       'Tambah',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 20),
+              Center(
+                child: Text(
+                  'Daftar Tugas Piket',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 300,
+                child:
+                    listPiket.isEmpty
+                        ? Center(
+                          child: Text(
+                            'Belum ada Data',
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        )
+                        : ListView.builder(
+                          itemCount: listPiket.length,
+                          itemBuilder: (context, index) {
+                            final piket = listPiket[index];
+                            return Card(
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              color: Color.fromARGB(184, 39, 29, 109),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      piket['tugas'],
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Colors.white,
+                                      ),
+                                      iconSize: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
               ),
             ],
           ),
