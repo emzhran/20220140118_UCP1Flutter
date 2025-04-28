@@ -188,7 +188,7 @@ class _PiketGudangState extends State<PiketGudang> {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
-                          borderSide: BorderSide(color: Colors.black),
+                          borderSide: BorderSide(color: Colors.black, width: 1.5),
                         ),
                         hintText: 'Tugas Piket',
                         hintStyle: TextStyle(color: Colors.black),
@@ -199,6 +199,24 @@ class _PiketGudangState extends State<PiketGudang> {
                         }
                         return null;
                       },
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  ElevatedButton(
+                    onPressed: _tambahDataPiket,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:  Color.fromARGB(184, 39, 29, 109),
+                      fixedSize: const Size(180, 60),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: const Text(
+                      'Tambah',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ],
