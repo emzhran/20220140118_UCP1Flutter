@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_file.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:ucp1_118/home_page.dart';
 
 class PiketGudang extends StatefulWidget {
   final String email;
@@ -67,6 +68,57 @@ class _PiketGudangState extends State<PiketGudang> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    String displayName = widget.email;
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        toolbarHeight: 80,
+        backgroundColor: Color.fromARGB(184, 39, 29, 109),
+        title: const Text('Piket Gudang',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white
+        )),
+        leading: IconButton(
+          onPressed: () => Navigator.pushReplacement(
+            context, 
+            MaterialPageRoute(builder: (context) => HomePage(email: displayName)),
+            ), 
+          icon: const Icon(Icons.arrow_back, color: Colors.white)),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text('Nama Anggota',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold
+                ),),
+                ),
+              const SizedBox(height: 10),
+              TextFormField(
+                initialValue: displayName,
+                readOnly: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0)
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(color: Colors.black)
+                  )
+                ),
+              ),
+            ],
+          )),
+      ),
+    );
   }
 }
