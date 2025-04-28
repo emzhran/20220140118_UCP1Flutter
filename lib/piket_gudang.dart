@@ -74,17 +74,20 @@ class _PiketGudangState extends State<PiketGudang> {
         centerTitle: true,
         toolbarHeight: 80,
         backgroundColor: Color.fromARGB(184, 39, 29, 109),
-        title: const Text('Piket Gudang',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.white
-        )),
+        title: const Text(
+          'Piket Gudang',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
         leading: IconButton(
-          onPressed: () => Navigator.pushReplacement(
-            context, 
-            MaterialPageRoute(builder: (context) => HomePage(email: displayName)),
-            ), 
-          icon: const Icon(Icons.arrow_back, color: Colors.white)),
+          onPressed:
+              () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(email: displayName),
+                ),
+              ),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -95,36 +98,40 @@ class _PiketGudangState extends State<PiketGudang> {
             children: [
               const Padding(
                 padding: EdgeInsets.only(left: 8.0),
-                child: Text('Nama Anggota',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold
-                ),),
+                child: Text(
+                  'Nama Anggota',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+              ),
               const SizedBox(height: 10),
               TextFormField(
                 initialValue: displayName,
                 readOnly: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0)
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
-                    borderSide: BorderSide(color: Colors.black)
-                  )
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
               const Padding(
                 padding: EdgeInsets.only(left: 8.0),
-                child: Text('Pilih Tanggal',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                )),
+                child: Text(
+                  'Pilih Tanggal',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
               ),
               const SizedBox(height: 10),
               GestureDetector(
@@ -140,8 +147,10 @@ class _PiketGudangState extends State<PiketGudang> {
                       const Icon(Icons.calendar_month, color: Colors.black),
                       const SizedBox(width: 10),
                       Text(
-                        selectedDate != null ? _formatTanggal(selectedDate) : 'Pilih Tanggal',
-                        style: const TextStyle(color: Colors.black),
+                        selectedDate != null
+                            ? _formatTanggal(selectedDate)
+                            : 'Pilih Tanggal',
+                        style: TextStyle(color: Colors.black),
                       ),
                     ],
                   ),
@@ -155,8 +164,48 @@ class _PiketGudangState extends State<PiketGudang> {
                     style: const TextStyle(color: Colors.red, fontSize: 14),
                   ),
                 ),
+              const SizedBox(height: 16),
+              const Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  'Tugas Piket',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: tugasController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        hintText: 'Tugas Piket',
+                        hintStyle: TextStyle(color: Colors.black),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Tugas tidak boleh kosong';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ],
-          )),
+          ),
+        ),
       ),
     );
   }
