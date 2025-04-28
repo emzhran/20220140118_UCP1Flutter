@@ -137,26 +137,24 @@ class _PiketGudangState extends State<PiketGudang> {
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.calendar_month, color: Colors.black),
-                      SizedBox(width: 10),
+                      const Icon(Icons.calendar_month, color: Colors.black),
+                      const SizedBox(width: 10),
                       Text(
-                        selectedDate != null
-                        ? _formatTanggal(selectedDate)
-                        : 'Pilih Tanggal',
-                        style: TextStyle(
-                          color: Colors.black
-                        ),
-                      ),
-                      if (dateError != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child: Text(dateError!, 
-                        style: TextStyle(color: Colors.red, fontSize: 14)),
+                        selectedDate != null ? _formatTanggal(selectedDate) : 'Pilih Tanggal',
+                        style: const TextStyle(color: Colors.black),
                       ),
                     ],
                   ),
                 ),
-              )
+              ),
+              if (dateError != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: Text(
+                    dateError!,
+                    style: const TextStyle(color: Colors.red, fontSize: 14),
+                  ),
+                ),
             ],
           )),
       ),
