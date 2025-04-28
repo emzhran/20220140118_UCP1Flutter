@@ -146,7 +146,13 @@ class _PiketGudangState extends State<PiketGudang> {
                         style: TextStyle(
                           color: Colors.black
                         ),
-                      )
+                      ),
+                      if (dateError != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Text(dateError!, 
+                        style: TextStyle(color: Colors.red, fontSize: 14)),
+                      ),
                     ],
                   ),
                 ),
