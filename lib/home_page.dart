@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Color.fromARGB(184, 39, 29, 109),
-        toolbarHeight: 120,
+        toolbarHeight: 100,
         flexibleSpace: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Row(
@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          const SizedBox(height: 180),
+          const SizedBox(height: 155),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ClipRRect(
@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                 width: double.infinity,
                 child: Center(
                   child: Image(
-                    image: AssetImage('./assets/image/Arei.png'),
+                    image: AssetImage('./assets/image/AreiExplore.png'),
                     fit: BoxFit.cover,
                     height: 200,
                   ),
@@ -83,6 +83,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Column(
