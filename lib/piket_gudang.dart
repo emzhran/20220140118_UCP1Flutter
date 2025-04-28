@@ -60,6 +60,11 @@ class _PiketGudangState extends State<PiketGudang> {
     }
   }
 
+  String _formatTanggal(DateTime? date) {
+    if (date == null) return 'Pilih tanggal';
+    return DateFormat('EEEE, dd MMMM yyyy', 'id_ID').format(date);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
