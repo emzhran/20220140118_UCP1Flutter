@@ -141,6 +141,42 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
                   return null;
                 },
               ),
+              const SizedBox(height: 16),
+              const Text(
+                'Jenis Barang',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                value: selectedJenisBarang,
+                items: jenisHargaBarang.keys
+                    .map(
+                      (item) => DropdownMenuItem(
+                        value: item,
+                        child: Text(item),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (val) => setState(() {
+                  selectedJenisBarang = val;
+                  hargaController.text = jenisHargaBarang[val!]!.toString();
+                }),
+                decoration: InputDecoration(
+                  hintText: "Jenis Barang",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Pilih jenis barang';
+                  }
+                  return null;
+                },
+              ),
             ],
           ),
         ),
