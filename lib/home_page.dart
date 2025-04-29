@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ucp1_118/data_pelanggan.dart';
 import 'package:ucp1_118/login_page.dart';
 import 'package:ucp1_118/piket_gudang.dart';
+import 'package:ucp1_118/transaksi_barang.dart';
 
 class HomePage extends StatelessWidget {
   final String email;
@@ -127,7 +128,7 @@ class HomePage extends StatelessWidget {
                       onPressed: (){
                         Navigator.push(
                           context, 
-                          MaterialPageRoute(builder: (context) => DataPelanggan()));
+                          MaterialPageRoute(builder: (context) => DataPelanggan(email: email)));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(184, 39, 29, 109),
@@ -157,7 +158,9 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => TransaksiBarang(emailLogin: email)));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(184, 39, 29, 109),
                       padding: const EdgeInsets.all(40),
