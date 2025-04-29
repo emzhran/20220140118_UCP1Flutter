@@ -54,7 +54,77 @@ class DetailPelanggan extends StatelessWidget {
               SizedBox(height: 4),
               Text(noHp, style: TextStyle(
                 fontSize: 16),
-              )
+              ),
+              const SizedBox(height: 15),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Alamat',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold
+                )),
+              ),
+              SizedBox(height: 4),
+              TextFormField(
+                initialValue: alamat,
+                readOnly: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0)
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Provinsi',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 4),
+                        TextFormField(
+                          initialValue: provinsi,
+                          readOnly: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            )
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 14,),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Kode Pos',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )
+                        ),
+                        SizedBox(height: 4),
+                        TextFormField(
+                          initialValue: kodePos,
+                          readOnly: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
