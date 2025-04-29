@@ -263,7 +263,7 @@ class _PiketGudangState extends State<PiketGudang> {
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        Navigator.pushReplacement(
+                                        Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder:
