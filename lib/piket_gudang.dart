@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:ucp1_118/home_page.dart';
 
 class PiketGudang extends StatefulWidget {
   final String email;
@@ -80,12 +79,7 @@ class _PiketGudangState extends State<PiketGudang> {
         ),
         leading: IconButton(
           onPressed:
-              () => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HomePage(email: displayName),
-                ),
-              ),
+              () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back, color: Colors.white),
         ),
       ),
