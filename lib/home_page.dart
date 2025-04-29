@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_118/data_pelanggan.dart';
 import 'package:ucp1_118/login_page.dart';
 import 'package:ucp1_118/piket_gudang.dart';
 
@@ -123,7 +124,11 @@ class HomePage extends StatelessWidget {
                   const SizedBox(width: 15),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder: (context) => DataPelanggan()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(184, 39, 29, 109),
                         padding: const EdgeInsets.all(30),
