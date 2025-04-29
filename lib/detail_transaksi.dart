@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_118/home_page.dart';
 
 class DetailTransaksi extends StatelessWidget {
   final String email;
@@ -23,7 +24,7 @@ class DetailTransaksi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFF7F4),
+      backgroundColor: const Color(0xFFFFF7F4),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -113,6 +114,44 @@ class DetailTransaksi extends StatelessWidget {
                       jumlah.toString(),
                       style: const TextStyle(fontSize: 16),
                     ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                decoration: const BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey)),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Jenis Harga Satuan",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text("Rp. $harga", style: const TextStyle(fontSize: 16)),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                decoration: const BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey)),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Total Harga",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text("Rp. $total", style: const TextStyle(fontSize: 16)),
                   ],
                 ),
               ),
