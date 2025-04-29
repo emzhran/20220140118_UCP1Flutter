@@ -177,6 +177,67 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
                   return null;
                 },
               ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: jumlahController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        hintText: "Jumlah Barang",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Jumlah barang tidak boleh kosong';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: TextFormField(
+                      controller: hargaController,
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        prefixText: 'Rp. ',
+                        hintText: 'Harga Satuan',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Harga satuan tidak boleh kosong';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    final jumlah = int.tryParse(jumlahController.text) ?? 0;
+                    final harga = jenisHargaBarang[selectedJenisBarang ?? ''] ?? 0;
+                    final total = jumlah * harga;
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:  Color.fromARGB(184, 39, 29, 109),
+                  minimumSize: const Size(400, 50),
+                ),
+                child: const Text(
+                  "Submit",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ],
           ),
         ),
