@@ -33,6 +33,32 @@ class DetailPelanggan extends StatelessWidget {
           onPressed: (){}, 
           icon: Icon(Icons.arrow_back, color: Colors.white)),
       ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Center(
+          child: Column(
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('./assets/image/donatello.png'),
+              ),
+              SizedBox(height: 16),
+              Text(nama, style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(email, style: TextStyle(
+                fontSize: 18),
+              ),
+              SizedBox(height: 4),
+              Text(noHp, style: TextStyle(
+                fontSize: 16),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
