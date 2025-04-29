@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:ucp1_118/detail_piket.dart';
 
 class PiketGudang extends StatefulWidget {
   final String email;
@@ -261,7 +262,16 @@ class _PiketGudangState extends State<PiketGudang> {
                                       ),
                                     ),
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder:
+                                                (context) =>
+                                                    DetailPiket(piket: piket),
+                                          ),
+                                        );
+                                      },
                                       icon: Icon(
                                         Icons.arrow_forward_ios,
                                         color: Colors.white,
