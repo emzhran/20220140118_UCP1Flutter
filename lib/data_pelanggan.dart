@@ -262,7 +262,8 @@ class _DataPelangganState extends State<DataPelanggan> {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      if (_formKey.currentState!.validate()){
+                         Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder:
@@ -277,6 +278,7 @@ class _DataPelangganState extends State<DataPelanggan> {
                               ),
                         ),
                       );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(184, 39, 29, 109),
