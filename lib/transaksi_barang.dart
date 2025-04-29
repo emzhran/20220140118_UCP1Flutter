@@ -5,15 +5,14 @@ import 'package:ucp1_118/detail_transaksi.dart';
 
 class TransaksiBarang extends StatefulWidget {
   final String emailLogin;
-  const TransaksiBarang({
-    super.key,
-    required this.emailLogin});
+  const TransaksiBarang({super.key, required this.emailLogin});
 
   @override
   State<TransaksiBarang> createState() => _TransaksiBarangState();
 }
 
 class _TransaksiBarangState extends State<TransaksiBarang> {
+  final TextEditingController tanggalController = TextEditingController();
   final TextEditingController jumlahController = TextEditingController();
   final TextEditingController hargaController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -38,7 +37,7 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
     });
   }
 
-    Future<void> _selectedDate(BuildContext context) async {
+  Future<void> _selectedDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
@@ -53,13 +52,11 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
     }
   }
 
-    String _formatTanggal(DateTime? date) {
+  String _formatTanggal(DateTime? date) {
     if (date == null) return 'Pilih tanggal';
     return DateFormat('EEEE, dd MMMM yyyy', 'id_ID').format(date);
   }
 
-
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,18 +85,16 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
               const SizedBox(height: 16),
               const Text(
                 'Tanggal Transaksi',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               TextFormField(
                 readOnly: true,
-                controller: TextEditingController(
-                  text: _formatTanggal(selectedDate),
-                ),
-                onTap: () => _selectedDate(context),
+                controller: tanggalController,
+                onTap: () async {
+                  await _selectedDate(context);
+                  tanggalController.text = _formatTanggal(selectedDate);
+                },
                 decoration: InputDecoration(
                   hintText: 'Pilih tanggal',
                   prefixIcon: const Icon(Icons.calendar_today),
@@ -125,15 +120,15 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
                 value: selectedJenisTransaksi,
-                items: ["Masuk", "Keluar"]
-                    .map(
-                      (item) => DropdownMenuItem(
-                        value: item,
-                        child: Text(item),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (val) => setState(() => selectedJenisTransaksi = val),
+                items:
+                    ["Masuk", "Keluar"]
+                        .map(
+                          (item) =>
+                              DropdownMenuItem(value: item, child: Text(item)),
+                        )
+                        .toList(),
+                onChanged:
+                    (val) => setState(() => selectedJenisTransaksi = val),
                 decoration: InputDecoration(
                   hintText: "Jenis Transaksi",
                   border: OutlineInputBorder(
@@ -158,18 +153,18 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
                 value: selectedJenisBarang,
-                items: jenisHargaBarang.keys
-                    .map(
-                      (item) => DropdownMenuItem(
-                        value: item,
-                        child: Text(item),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (val) => setState(() {
-                  selectedJenisBarang = val;
-                  hargaController.text = jenisHargaBarang[val!]!.toString();
-                }),
+                items:
+                    jenisHargaBarang.keys
+                        .map(
+                          (item) =>
+                              DropdownMenuItem(value: item, child: Text(item)),
+                        )
+                        .toList(),
+                onChanged:
+                    (val) => setState(() {
+                      selectedJenisBarang = val;
+                      hargaController.text = jenisHargaBarang[val!]!.toString();
+                    }),
                 decoration: InputDecoration(
                   hintText: "Jenis Barang",
                   border: OutlineInputBorder(
@@ -231,28 +226,30 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     final jumlah = int.tryParse(jumlahController.text) ?? 0;
-                    final harga = jenisHargaBarang[selectedJenisBarang ?? ''] ?? 0;
+                    final harga =
+                        jenisHargaBarang[selectedJenisBarang ?? ''] ?? 0;
                     final total = jumlah * harga;
                     final tanggalFormatted = _formatTanggal(selectedDate);
 
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailTransaksi(
-                          tanggal: tanggalFormatted,
-                          jenisTransaksi: selectedJenisTransaksi ?? '',
-                          jenisBarang: selectedJenisBarang ?? '',
-                          jumlah: jumlah,
-                          harga: harga,
-                          total: total,
-                          email: widget.emailLogin,
-                        ),
+                        builder:
+                            (context) => DetailTransaksi(
+                              tanggal: tanggalFormatted,
+                              jenisTransaksi: selectedJenisTransaksi ?? '',
+                              jenisBarang: selectedJenisBarang ?? '',
+                              jumlah: jumlah,
+                              harga: harga,
+                              total: total,
+                              email: widget.emailLogin,
+                            ),
                       ),
                     );
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:  Color.fromARGB(184, 39, 29, 109),
+                  backgroundColor: Color.fromARGB(184, 39, 29, 109),
                   minimumSize: const Size(400, 50),
                 ),
                 child: const Text(
