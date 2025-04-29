@@ -34,6 +34,39 @@ class DetailPiket extends StatelessWidget {
           color: Colors.white),
         ),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  _formatTanggal(piket['tanggal']),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color:  Color.fromARGB(184, 39, 29, 109),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    color:  Color.fromARGB(184, 39, 29, 109),
+                    borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: Text(piket['nama'],
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white
+                  )),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
 }
