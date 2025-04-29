@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_118/detail_pelanggan.dart';
 
 class DataPelanggan extends StatefulWidget {
   const DataPelanggan({super.key});
@@ -257,7 +258,22 @@ class _DataPelangganState extends State<DataPelanggan> {
                 const SizedBox(height: 60),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (context) => DetailPelanggan(
+                                nama: namaCustomerController.text,
+                                email: emailController.text,
+                                noHp: noHpController.text,
+                                alamat: alamatController.text,
+                                provinsi: provinsiController.text,
+                                kodePos: kdPosController.text,
+                              ),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(184, 39, 29, 109),
                       minimumSize: Size(double.infinity, 55),
