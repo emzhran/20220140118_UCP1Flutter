@@ -26,9 +26,8 @@ class DetailPiket extends StatelessWidget {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(
-              context, piket
-            );
+            Navigator.pop(context, piket);
+            FocusScope.of(context).unfocus();
           },
           icon: Icon(Icons.arrow_back,
           color: Colors.white),
@@ -63,7 +62,24 @@ class DetailPiket extends StatelessWidget {
                   )),
                 )
               ],
-            )
+            ),
+            SizedBox(height: 30),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(184, 39, 29, 109),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                piket['tugas'],
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ],
         ),
       ),
