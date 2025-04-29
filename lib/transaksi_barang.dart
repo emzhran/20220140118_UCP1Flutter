@@ -55,8 +55,96 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
   }
 
 
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        toolbarHeight: 80,
+        backgroundColor: Color.fromARGB(184, 39, 29, 109),
+        title: const Text(
+          'Pendataan Barang',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 16),
+              const Text(
+                'Tanggal Transaksi',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                readOnly: true,
+                controller: TextEditingController(
+                  text: _formatTanggal(selectedDate),
+                ),
+                onTap: () => _selectedDate(context),
+                decoration: InputDecoration(
+                  hintText: 'Pilih tanggal',
+                  prefixIcon: const Icon(Icons.calendar_today),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Tanggal tidak boleh kosong';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Jenis Transaksi',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                value: selectedJenisTransaksi,
+                items: ["Masuk", "Keluar"]
+                    .map(
+                      (item) => DropdownMenuItem(
+                        value: item,
+                        child: Text(item),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (val) => setState(() => selectedJenisTransaksi = val),
+                decoration: InputDecoration(
+                  hintText: "Jenis Transaksi",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Pilih jenis transaksi';
+                  }
+                  return null;
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
