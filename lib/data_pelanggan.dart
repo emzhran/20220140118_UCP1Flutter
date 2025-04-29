@@ -13,6 +13,7 @@ class _DataPelangganState extends State<DataPelanggan> {
   final TextEditingController noHpController = TextEditingController();
   final TextEditingController provinsiController = TextEditingController();
   final TextEditingController kdPosController = TextEditingController();
+  final TextEditingController alamatController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,41 @@ class _DataPelangganState extends State<DataPelanggan> {
             Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back, color: Colors.white),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Text(
+                'Nama Cust',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 4),
+            TextFormField(
+              controller: namaCustomerController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                hintText: 'Nama Cust',
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Cust tidak boleh kosong';
+                }
+                return null;
+              },
+            ),
+          ],
         ),
       ),
     );
