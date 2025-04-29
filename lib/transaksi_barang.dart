@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:ucp1_118/detail_transaksi.dart';
 
 class TransaksiBarang extends StatefulWidget {
-  const TransaksiBarang({super.key});
+  final String emailLogin;
+  const TransaksiBarang({
+    super.key,
+    required this.emailLogin});
 
   @override
   State<TransaksiBarang> createState() => _TransaksiBarangState();
@@ -229,6 +233,22 @@ class _TransaksiBarangState extends State<TransaksiBarang> {
                     final jumlah = int.tryParse(jumlahController.text) ?? 0;
                     final harga = jenisHargaBarang[selectedJenisBarang ?? ''] ?? 0;
                     final total = jumlah * harga;
+                    final tanggalFormatted = _formatTanggal(selectedDate);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailTransaksi(
+                          tanggal: tanggalFormatted,
+                          jenisTransaksi: selectedJenisTransaksi ?? '',
+                          jenisBarang: selectedJenisBarang ?? '',
+                          jumlah: jumlah,
+                          harga: harga,
+                          total: total,
+                          email: widget.emailLogin,
+                        ),
+                      ),
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
