@@ -125,6 +125,24 @@ class DetailPelanggan extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 30),
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: (){},
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor:  Color.fromARGB(184, 39, 29, 109),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)
+                  )
+                  ),
+                  child: Text('Selesai',
+                  style: TextStyle(
+                    color: Colors.white
+                  )),
+                ),
+              ),
             ],
           ),
         ),
