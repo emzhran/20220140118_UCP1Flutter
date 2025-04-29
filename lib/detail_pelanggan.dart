@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1_118/home_page.dart';
 
 class DetailPelanggan extends StatelessWidget {
+  final String emailHome;
   final String nama;
   final String email;
   final String noHp;
@@ -16,6 +18,7 @@ class DetailPelanggan extends StatelessWidget {
     required this.alamat,
     required this.provinsi,
     required this.kodePos,
+    required this.emailHome
   });
 
   @override
@@ -130,7 +133,11 @@ class DetailPelanggan extends StatelessWidget {
                 width: double.infinity,
                 height: 55,
                 child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => HomePage(email: emailHome)));
+                  },
                   style: OutlinedButton.styleFrom(
                     backgroundColor:  Color.fromARGB(184, 39, 29, 109),
                   shape: RoundedRectangleBorder(
